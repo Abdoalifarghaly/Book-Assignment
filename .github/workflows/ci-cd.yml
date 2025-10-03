@@ -1,4 +1,4 @@
-name: Node.js CI/CD
+name: Node.js CI
 
 on:
     push:
@@ -30,16 +30,3 @@ jobs:
             - name: Run tests
               working-directory: ./backend
               run: npm test
-
-            - name: Deploy to server
-              uses: appleboy/ssh-action@master
-              with:
-                  host: ${{ secrets.SSH_HOST }}
-                  username: ${{ secrets.SSH_USER }}
-                  key: ${{ secrets.SSH_PRIVATE_KEY }}
-                  port: 22
-                  script: |
-                      cd /home/abdo/mern-assignment/backend
-                      git pull
-                      npm install
-                      pm2 restart backend
