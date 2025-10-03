@@ -17,10 +17,12 @@ jobs:
           node-version: "22.x"
 
       - name: Install dependencies
+        working-directory: ./backend
         run: npm install
 
       - name: Run tests
-        run: npm test # لو عندك اختبارات
+        working-directory: ./backend
+        run: npm test
 
       - name: Deploy to server
         uses: appleboy/ssh-action@master
@@ -30,7 +32,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /home/abdo/mern-assignment
+            cd /home/abdo/mern-assignment/backend
             git pull
             npm install
             pm2 restart backend
