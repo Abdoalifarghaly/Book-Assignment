@@ -16,6 +16,26 @@ app.use(morgan('dev'))
 
 //handel error
 
+
+app.get('/', (req, res) => {
+  res.send(`
+    <html>
+      <head>
+        <title>Book API</title>
+        <style>
+          body { font-family: sans-serif; background: #f8f9fa; text-align:center; padding-top:50px; }
+          h1 { color: #333; }
+          p { color: #666; }
+        </style>
+      </head>
+      <body>
+        <h1>🚀 Book API Server is Running</h1>
+        <p>Go to <a href="/api/health">/api/health</a> to check server health.</p>
+      </body>
+    </html>
+  `);
+});
+
 app.get('/api/health', (req, res) => res.json({ ok: true, time: Date.now() }));
 
 // routes (سيتم إضافتها لاحقاً)
