@@ -32,6 +32,7 @@ app.use((req, res, next) => {
   next();
 });
 
+const cors = require("cors");
 const allowedOrigins = [
   "http://localhost:3000",
   "https://book-assignment-beta.vercel.app",
@@ -40,10 +41,11 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: allowedOrigins,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+console.log("✅ CORS middleware enabled");
 
 // ✅ لازم تضيف السطر ده علشان preflight requests تشتغل كويس في Vercel
 app.options("*", cors());
