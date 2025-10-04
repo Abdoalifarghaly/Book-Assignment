@@ -7,8 +7,8 @@ const helmet=require('helmet')
 
 const PORT=process.env.PORT
 
-const app = require("./app");
-//app
+const app=express();
+
 app.use(helmet())
 app.use(express.json())
 app.use(cors())
