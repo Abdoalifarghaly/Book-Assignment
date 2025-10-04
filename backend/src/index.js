@@ -2,7 +2,6 @@ require('dotenv').config();
 const express=require('express')
 const mongoose=require('mongoose')
 const morgan=require('morgan')
-const cors=require("cors")
 const helmet=require('helmet')
 
 const PORT=process.env.PORT
@@ -48,7 +47,6 @@ app.use(
 console.log("✅ CORS middleware enabled");
 
 // ✅ لازم تضيف السطر ده علشان preflight requests تشتغل كويس في Vercel
-app.options("*", cors());
 app.use(morgan('dev'))
 
 //handel error
